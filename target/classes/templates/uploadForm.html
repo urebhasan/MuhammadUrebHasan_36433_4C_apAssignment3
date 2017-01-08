@@ -1,0 +1,66 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<style>
+body{
+	background-color: #4CAF50;
+	color: #4CAF50;
+}
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+div {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+</style>
+
+<body>
+	<div>
+		<div th:if="${message}" >
+			<h2 th:text="${message}"/>
+		</div>
+	
+		<div>
+			<form method="POST" enctype="multipart/form-data" action="/">
+				<table>
+					<tr><td><b>File to upload:</b></td><td><input type="file" name="file" /></td></tr>
+					<tr><td></td><td><input type="submit" value="Upload" /></td></tr>
+				</table>
+			</form>
+		</div>
+	</div>
+	<div th:if="${files}">
+		<H3>Previosuly uploaded files:</H3>
+		<ul>
+			<li th:each="file : ${files}">
+				<a th:href="${file}" th:text="${file}" />
+			</li>
+		</ul>
+	</div>
+
+</body>
+</html>
